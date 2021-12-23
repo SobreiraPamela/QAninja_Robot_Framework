@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.0 on win32)" generated="20211219 20:53:05.935" rpa="false" schemaversion="2">
+<suite id="s1" name="Conta" source="C:\RobotXpert\start\conta.robot">
+<test id="s1-t1" name="Quando abro nova conta deve retornar saldo ZERADO">
+<kw name="Abrir Conta" library="ContaLibrary">
+<status status="PASS" starttime="20211219 20:53:05.979" endtime="20211219 20:53:05.979"/>
+</kw>
+<kw name="Obter Saldo" library="ContaLibrary">
+<var>${saldo_final}</var>
+<msg timestamp="20211219 20:53:05.980" level="INFO">${saldo_final} = 0.0</msg>
+<status status="PASS" starttime="20211219 20:53:05.980" endtime="20211219 20:53:05.980"/>
+</kw>
+<kw name="Log ${saldo_final}">
+<msg timestamp="20211219 20:53:05.981" level="FAIL">No keyword with name 'Log ${saldo_final}' found.</msg>
+<status status="FAIL" starttime="20211219 20:53:05.981" endtime="20211219 20:53:05.981"/>
+</kw>
+<status status="FAIL" starttime="20211219 20:53:05.979" endtime="20211219 20:53:05.982">No keyword with name 'Log ${saldo_final}' found.</status>
+</test>
+<doc>Suite para testar a classe ContaLibrry</doc>
+<status status="FAIL" starttime="20211219 20:53:05.936" endtime="20211219 20:53:05.983"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Conta">Conta</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
