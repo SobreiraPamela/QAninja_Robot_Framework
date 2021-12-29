@@ -14,13 +14,16 @@ class ContaLibrary():
         self.saldo -= valor
         self.saldo -= 2.0
 
+      
+#conta = ContaLibrary()
+#conta.abrir_conta()
+#conta.deposita(100.00)
+#print(conta.obter_saldo()) 
+
+
 class PrintMessage():
     def printMessageLn(self, message):
         print(message)
 
     def printSoma(self, a, b):
         print(a+b)
-# conta = ContaLibrary()
-# conta.abrir_conta()
-# conta.deposita(100.00)
-# print(conta.obter_saldo())
