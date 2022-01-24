@@ -17,3 +17,14 @@ Login do Administrador
 
     Take Screenshot
 
+Senha incorreta
+    [tags]          temp
+    New Browser     chromium    False
+    New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
+
+    Fill Text       css=input[name=email]               admin@bodytest.com
+    Fill Text       css=input[name=password]            abc123
+    Click           text=Entrar
+
+    Wait For Elements State     css=.Toastify__toast-body           visible     5  
+    Get Text                    css=.Toastify__toast-body           should be   Usuário ou senha inválido
