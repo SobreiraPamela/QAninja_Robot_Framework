@@ -3,15 +3,15 @@ Documentation       Suite de testes de Login do Administrador
 
 Library     Browser
 
+Resource    ../resources/base.robot
+
 ***Test Cases***
 Login do Administrador
+    [Tags]          admin   
     New Browser     chromium    False
     New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
 
-    Fill Text       css=input[name=email]               admin@bodytest.com
-
-    Fill Text       css=input[name=password]            pwd123
-    Click           text=Entrar
+    Login With      admin@bodytest.com pwd123
     
     Get Text        css=aside strong      should be       Administrador
 
@@ -22,12 +22,7 @@ Senha incorreta
     New Browser     chromium    False
     New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
 
-    Fill Text       css=input[name=email]               admin@bodytest.com
-    Fill Text       css=input[name=password]            abc123
-    Click           text=Entrar
-
-    #Wait For Elements State     css=.Toastify__toast-body           visible     5  
-    #Get Text                    css=.Toastify__toast-body           should be   Usuário ou senha inválido
+    Login With      admin@bodytest.com abc123
 
     Wait For Elements State      css=.Toastify__toast-body >> test=Usuário ou senha inválido
 
@@ -36,31 +31,29 @@ Email Incorreto
     New Browser     chromium    False
     New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
 
-    Fill Text       css=input[name=email]               admin&bodytest.com
-    Fill Text       css=input[name=password]            abc123
-    Click           text=Entrar
+    Login With      admin&bodytest.com abc123
 
      Wait For Elements State      css=form span >> test=Informe um email válido         visible     5
 
 Senha não informada
- [tags]          temp
+    [tags]          temp
     New Browser     chromium    False
     New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
 
-    Fill Text       css=input[name=email]               admin@bodytest.com
-    Fill Text       css=input[name=password]            ${EMPTY}
-    Click           text=Entrar
+    Login With      admin&bodytest.com ${EMPTY}
 
      Wait For Elements State      css=form span >> test=A senha é obrigatória         visible     5
 
 Email não informado
 
- [tags]          temp
+    [tags]          temp
     New Browser     chromium    False
     New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
 
+    Login With      ${EMPTY} abc123
+
     Fill Text       css=input[name=email]               ${EMPTY}
-    Fill Text       css=input[name=password]            abc123
+    Fill Text       css=input[placeholder*=senha]            abc123
     Click           text=Entrar
 
      Wait For Elements State      css=form span >> test=O email é obrigatório         visible     5     
@@ -71,9 +64,7 @@ Email e Senha não informados
     New Browser     chromium    False
     New Page        http://bodytest-web-pamelasobreira.herokuapp.com/
 
-    Fill Text       css=input[name=email]               ${EMPTY}
-    Fill Text       css=input[name=password]            ${EMPTY}
-    Click           text=Entrar
+    Login With      ${EMPTY} ${EMPTY}
 
      Wait For Elements State      css=form span >> test=O email é obrigatório         visible     5
      Wait For Elements State      css=form span >> test=A senha é obrigatória         visible     5
